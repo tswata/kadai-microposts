@@ -1,0 +1,53 @@
+<div class="row">
+  <aside class="col-xs-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @user.name %></h3>
+      </div>
+      <div class="panel-body">
+        <img class="media-object img-rounded img-responsive" src="<%= gravatar_url(@user, { size: 500})%>" alt="">
+      </div>
+    </div>
+  </aside>
+
+  <aside class="col-xs-8">
+  <h3>Favorites List</h3>
+  <ul class="media-list" >
+    <% favorites = @favorites %>
+    <% favorites.each do |favorite| %>
+    <% user = favorite.user %>
+    <% micropost = favorite %>
+    <li class="media">
+      <div class="media-left">
+        <img class="media-object img-rounded" src="<%= gravatar_url(current_user, options = { size: 50 })%>" alt="">
+      </div>
+      <div class="media-body">
+          <div>
+            <%= link_to user.name, user_path(user) %> <span class="text-muted">posted at <%= micropost.created_at %></span>
+          </div>
+          <div>
+            <p><%= micropost.content %></p>
+          </div>
+          <div>
+           <table width="170">
+            <thead>
+              <tr>
+                <th>
+                 <%= render "f_relationships/favorite_button", micropost: micropost %>
+                </th>
+                <th>
+                  <% if current_user == micropost.user %>
+                    <%= link_to "Delete", micropost, method: :delete, data: {confirm: "You sure?" }, class: "btn btn-danger btn-xs" %>
+                  <% end %> 
+                </th>
+              </tr>
+            </thead>
+           </table> 
+          </div>
+        </div>
+    </li>
+    <% end %>
+    <%= paginate favorites %>
+  </ul>
+  </aside>
+</div>

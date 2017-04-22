@@ -2,10 +2,14 @@
   <div class="row">
     <aside class="col-md-4">
       <%= form_for(@micropost) do |f| %>
-      <div class="form-group">
-      <%= f.text_area :content, class: "form-control", rows: 5 %>
-      </div>
-      <%= f.submit "Post", class: "btn btn-primary btn-block" %>
+        <div class="form-group">
+        <%= f.text_area :content, class: "form-control", rows: 5 %>
+        </div>
+        <%= f.submit "Post", class: "btn btn-primary btn-block" %>
+      <% end %>
+      <br>
+      <% if current_user == @user %>
+        <%= link_to "Favorites List", favorites_user_path(@user), class:"btn btn-info" %>
       <% end %>
     </aside>
     <div class="col-xs-8">
