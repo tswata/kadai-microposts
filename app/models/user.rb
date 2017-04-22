@@ -42,8 +42,7 @@ class User < ApplicationRecord
     f_relationship = self.f_relationships.find_or_create_by(micropost_id: micropost.id)
     f_relationship.destroy if f_relationship
   end
- 
- 
+  
   def isfavorite?(micropost)
     self.favorites.include?(micropost)
   end

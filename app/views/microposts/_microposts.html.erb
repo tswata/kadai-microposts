@@ -20,8 +20,11 @@
               </th>
               <th>
                 <% if current_user == micropost.user %>
-                  <%= link_to "Delete", micropost, method: :delete, data: {confirm: "You sure?" }, class: "btn btn-danger btn-xs" %>
-                <% end %> 
+                  <% if user.isfavorite?(micropost) %>
+                  <% else %>
+                    <%= link_to "Delete", micropost, method: :delete, data:{ confirm: "You sure?"}, class: "btn btn-danger btn-xs" %>
+                  <% end %>
+                <% end %>
               </th>
             </tr>
           </thead>
