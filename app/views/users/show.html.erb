@@ -10,8 +10,10 @@
     </div>
     <%= render "relationships/follow_button", user: @user %>
     <% if current_user == @user %>
+    <div style="margin-bottom: 20px;">
       <%= link_to "Favorites List", favorites_user_path(@user), class:"btn btn-primary btn-block" %>
-    <% end %>
+    </div>
+   <% end %>
   </aside>
   <div class="col-xs-8">
     <ul class="nav nav-tabs nav-justified">

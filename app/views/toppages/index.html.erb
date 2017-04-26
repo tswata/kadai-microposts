@@ -8,9 +8,9 @@
         <%= f.submit "Post", class: "btn btn-primary btn-block" %>
       <% end %>
       <br>
-      <% if current_user == @user %>
+      <%# if current_user == @user %>
         <%= link_to "Favorites List", favorites_user_path(@user), class:"btn btn-info" %>
-      <% end %>
+      <%# end %>
     </aside>
     <div class="col-xs-8">
       <%= render "microposts/microposts", microposts: @microposts, user: @user %>
